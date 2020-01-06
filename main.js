@@ -1,6 +1,6 @@
 window.game = new Game();
 const root = document.querySelector('#root');
-window.view = new View(root, 320, 640, 20, 10);
+window.view = new View(root, 480, 640, 20, 10);
 
 document.addEventListener('keydown', event => {
   switch (event.keyCode) {
@@ -22,3 +22,5 @@ document.addEventListener('keydown', event => {
       break
   }
 })
+
+view.renderGameOverScreen(game.getState());
