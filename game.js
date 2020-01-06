@@ -7,6 +7,7 @@ class Game {
   };
   score = 0;
   lines = 19;
+  topOut  = false;
   playfield = this.createPlayfield();
   activePiece = this.createPiece();
   nextPiece = this.createPiece();
@@ -39,6 +40,7 @@ class Game {
       level: this.level,
       lines: this.lines,
       nextPiece: this.nextPiece,
+      isGameOver: this.topOut,
       playfield
     };
   }
@@ -167,6 +169,7 @@ class Game {
   }
 
   movePieceDown() {
+    if(this.topOut) return;
     this.activePiece.y += 1;
 
     if (this.hasCollision()) {
@@ -175,6 +178,9 @@ class Game {
       let clearedLines = this.clearLines();
       this.updateScore(clearedLines);
       this.updatePieces();
+    }
+    if(this.hasCollision()){
+      this.topOut = true;
     }
   }
 

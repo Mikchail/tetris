@@ -46,35 +46,37 @@ class View {
     this.renderPanel(state);
   }
 
+  renderPauseScreen() {
+    this.context.fillStyle = "rgba(0,0,0,0.5)";
+    this.context.fillRect(0, 0, this.width, this.height);
 
-
- 
-
-  renderStartScreen(){
-    this.context.fillStyle = 'black';
-    this.context.font = '18px "Press start 2P"';
-    this.context.textAlign = 'center';
-    this.context.textBaseline = 'middle';
-    this.context.fillText('Press ENTER to start', this.width / 2, this.height / 2);
+    this.context.fillStyle = "black";
+    this.context.font = '18px "Arial"';
+    this.context.textAlign = "center";
+    this.context.textBaseline = "middle";
+    this.context.fillText("Pause game", this.width / 2, this.height / 2);
   }
-  renderPauseScreen(){
-    this.context.fillStyle = 'rgba(0,0,0,0.75)';
-    this.context.fillRect(0,0,this.width,this.height);
-    this.context.fillStyle = 'black';
+  renderStartScreen() {
+    this.context.fillStyle = "black";
     this.context.font = '18px "Press start 2P"';
-    this.context.textAlign = 'center';
-    this.context.textBaseline = 'middle';
-    this.context.fillText('Press ENTER to resume', this.width / 2, this.height / 2);
+    this.context.textAlign = "center";
+    this.context.textBaseline = "middle";
+    this.context.fillText(
+      "Press ENTER to start",
+      this.width / 2,
+      this.height / 2
+    );
   }
-  renderGameOverScreen({ score }){
+
+  renderGameOverScreen({ score }) {
     this.clearScreen();
- 
-    this.context.fillStyle = 'black';
+
+    this.context.fillStyle = "black";
     this.context.font = '18px "Press start 2P"';
-    this.context.textAlign = 'center';
-    this.context.textBaseline = 'middle';
-    this.context.fillText('Game OVER', this.width / 2, this.height / 2 - 48);
-    this.context.fillText(`Score: ${score}`, this.width / 2, this.height / 2 );
+    this.context.textAlign = "center";
+    this.context.textBaseline = "middle";
+    this.context.fillText("Game OVER", this.width / 2, this.height / 2 - 48);
+    this.context.fillText(`Score: ${score}`, this.width / 2, this.height / 2);
   }
   renderPlayField({ playfield }) {
     for (let y = 0; y < playfield.length; y++) {
@@ -83,8 +85,6 @@ class View {
         const block = line[x];
 
         if (block) {
-          console.log(block);
-
           this.renderBlock(
             this.playfieldX + x * this.blockWidth,
             this.playfieldY + y * this.blockHeight,
@@ -96,9 +96,14 @@ class View {
       }
     }
 
-    this.context.strokeStyle = 'black';
+    this.context.strokeStyle = "black";
     this.context.lineWidth = this.playfieldBorderWidth;
-    this.context.strokeRect(0,0, this.playfieldWidth,this.playfieldInnerHeight);
+    this.context.strokeRect(
+      0,
+      0,
+      this.playfieldWidth,
+      this.playfieldInnerHeight
+    );
   }
 
   renderPanel({ level, score, lines, nextPiece }) {
@@ -120,8 +125,8 @@ class View {
           this.renderBlock(
             this.panelX + x * this.blockWidth * 0.5,
             this.panelY + 100 + y * this.blockHeight * 0.5,
-            this.blockWidth  * 0.5,
-            this.blockHeight  * 0.5,
+            this.blockWidth * 0.5,
+            this.blockHeight * 0.5,
             View.colors["5"]
           );
         }
