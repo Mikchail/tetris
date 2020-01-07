@@ -77,6 +77,7 @@ class View {
     this.context.textBaseline = "middle";
     this.context.fillText("Game OVER", this.width / 2, this.height / 2 - 48);
     this.context.fillText(`Score: ${score}`, this.width / 2, this.height / 2);
+    this.context.fillText("Press Enter to Restart", this.width / 2, this.height / 2 + 48);
   }
   renderPlayField({ playfield }) {
     for (let y = 0; y < playfield.length; y++) {
@@ -102,7 +103,7 @@ class View {
       0,
       0,
       this.playfieldWidth,
-      this.playfieldInnerHeight
+      this.playfieldHeight
     );
   }
 
@@ -127,7 +128,7 @@ class View {
             this.panelY + 100 + y * this.blockHeight * 0.5,
             this.blockWidth * 0.5,
             this.blockHeight * 0.5,
-            View.colors["5"]
+            View.colors[block]
           );
         }
       }

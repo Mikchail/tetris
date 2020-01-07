@@ -5,12 +5,10 @@ class Game {
     "3": 300,
     "4": 1200
   };
-  score = 0;
-  lines = 19;
-  topOut  = false;
-  playfield = this.createPlayfield();
-  activePiece = this.createPiece();
-  nextPiece = this.createPiece();
+
+  constructor(){
+    this.reset();
+  }
 
   get level(){
     return Math.floor(this.lines * 0.1);
@@ -44,7 +42,14 @@ class Game {
       playfield
     };
   }
-
+  reset(){
+    this.score = 0;
+    this.lines = 19;
+    this.topOut  = false;
+    this.playfield = this.createPlayfield();
+    this.activePiece = this.createPiece();
+    this.nextPiece = this.createPiece();
+  }
   createPlayfield() {
     const playfield = [];
     for (let y = 0; y < 20; y++) {
@@ -65,7 +70,7 @@ class Game {
       case "I":
         piece.blocks = [
           [0, 0, 0, 0],
-          [1, 1, 1, 1],
+          [2, 2, 2, 2],
           [0, 0, 0, 0],
           [0, 0, 0, 0]
         ];
@@ -73,44 +78,44 @@ class Game {
       case "J":
         piece.blocks = [
           [0, 0, 0],
-          [1, 1, 1],
-          [0, 0, 1]
+          [3, 3, 3],
+          [0, 0, 3]
         ];
         break;
       case "L":
         piece.blocks = [
           [0, 0, 0],
-          [1, 1, 1],
-          [1, 0, 0]
+          [4, 4, 4],
+          [4, 0, 0]
         ];
         break;
       case "O":
         piece.blocks = [
           [0, 0, 0, 0],
-          [0, 1, 1, 0],
-          [0, 1, 1, 0],
+          [0, 5, 5, 0],
+          [0, 5, 5, 0],
           [0, 0, 0, 0]
         ];
         break;
       case "S":
         piece.blocks = [
           [0, 0, 0],
-          [0, 1, 1],
-          [1, 1, 0]
+          [0, 7, 7],
+          [7, 7, 0]
         ];
         break;
       case "T":
         piece.blocks = [
           [0, 0, 0],
-          [1, 1, 1],
-          [0, 1, 0]
+          [8, 8, 8],
+          [0, 8, 0]
         ];
         break;
       case "Z":
         piece.blocks = [
           [0, 0, 0],
-          [1, 1, 0],
-          [0, 1, 1]
+          [9, 9, 0],
+          [0, 9, 9]
         ];
         break;
       default:
